@@ -1,4 +1,4 @@
-module.exports = [
-  require('./medium'),
-  require('./vila')
-]
+module.exports = {
+  comicBook: require('./comic-book')
+} 
+

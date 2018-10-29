@@ -1,7 +1,16 @@
 const Hapi = require('hapi')
-const routes = require('./routes')
+const mongoose = require('mongoose')
+mongoose.Promise = require('bluebird')
+
 //testing deploy pipeline with jenkins and githooks
 const serverFactory = () => {
+  //connect with mongoDB
+  mongoose.connect(process.env.MONGO_HOST, {
+    useMongoClient: true
+  })
+
+  const ComicBook = require('./models/comic-book.js')
+
   const server = new Hapi.Server({
     port: process.env.PORT || 3000,
     host: 'localhost',
@@ -12,7 +21,9 @@ const serverFactory = () => {
     } 
   })
   
-  server.route(routes)
+  const routes = require('./routes')
+
+  server.route(routes.comicBook)
 
   return server
 }
