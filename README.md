@@ -1,4 +1,4 @@
 # api-postagens
-Api gateway to consume posts from medium and vila do silicio
+Api to manage comic books
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/iagocavalcante/api-postagens?branch=master)](https://bettercodehub.com/)
