@@ -1,4 +1,3 @@
-'use strict'
 const mongoose = require('mongoose')
 const ComicBook = mongoose.model('ComicBook')
 
@@ -30,8 +29,7 @@ exports.getBySaga = async (saga) => {
 }
 
 exports.create = async (data) => {
-  var ComicBook = new ComicBook(data)
-  await ComicBook.save()
+  await ComicBook.create(data)
 }
 
 exports.update = async (id, data) => {
@@ -44,8 +42,8 @@ exports.update = async (id, data) => {
         slug: data.slug,
         saga: data.saga,
         read: data.read,
-        publised_id: data.publised_id,
-        publised_date: data.publised_date,
+        publisher_id: data.publisher_id,
+        published_date: data.published_date,
       }
     })
 }

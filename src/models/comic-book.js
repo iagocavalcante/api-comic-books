@@ -1,9 +1,7 @@
-'use strict'
-
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const schema = new Schema({
+const comicBook = new Schema({
   title: {
     type: String,
     required: true,
@@ -36,19 +34,17 @@ const schema = new Schema({
   },
   image: {
     type: String,
-    required: true,
     trim: true
   },
   publisher_id: {
     type: String,
-    required: true,
     trim: true
   },
   published_date: {
-    type: Date,
-    required: true,
-    trim: true
+    type: String,
+    trim: true,
+    required: [true, 'A data de publicação é obrigatória']
   }
 })
 
-module.exports = mongoose.model('ComicBook', schema)
+module.exports = mongoose.model('ComicBook', comicBook, 'comic-books')
