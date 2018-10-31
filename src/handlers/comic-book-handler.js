@@ -13,40 +13,40 @@ const get = async (req, h) => {
   }
 }
 
-const getBySlug = async (req, reply) => {
+const getBySlug = async (req, h) => {
   try {
     let data = await repository.getBySlug(req.params.slug)
-    return reply.response(data).code(200)
+    return h.response(data).code(200)
   } catch (e) {
-    return reply.response({
+    return h.response({
       message: 'Falha ao processar sua requisição'
     }).code(500)
   }
 }
 
-const getById = async (req, reply) => {
+const getById = async (req, h) => {
   try {
     let data = await repository.getById(req.params.id)
-    return reply.response(data).code(200)
+    return h.response(data).code(200)
   } catch (e) {
-    return reply.response({
+    return h.response({
       message: 'Falha ao processar sua requisição'
     }).code(500)
   }
 }
 
-const getBySaga = async (req, reply) => {
+const getBySaga = async (req, h) => {
   try {
     const data = await repository.getBySaga(req.params.saga)
-    return reply.response(data).code(200)
+    return h.response(data).code(200)
   } catch (e) {
-    reply.response({
+    h.response({
       message: 'Falha ao processar sua requisição'
     }).code(500)
   }
 }
 
-const post = async (req, reply) => {
+const post = async (req, h) => {
   let contract = new ValidationContract()
   contract.hasMinLen(req.payload.title, 5, 'O título deve conter pelo menos 5 caracteres')
   contract.hasMinLen(req.payload.slug, 5, 'O slug deve conter pelo menos 5 caracteres')
@@ -55,7 +55,7 @@ const post = async (req, reply) => {
 
   // Se os dados forem inválidos
   if (!contract.isValid()) {
-    return reply.response(contract.errors()).code(400)
+    return h.response(contract.errors()).code(400)
   }
 
   try {
@@ -86,40 +86,40 @@ const post = async (req, reply) => {
       saga: req.payload.saga,
       publisher_id: req.payload.publisher_id,
       published_date: req.payload.published_date,
-      // image: 'https://nodestr.blob.core.windows.net/product-images/' + filename
+      image: req.payload.image//'https://nodestr.blob.core.windows.net/product-images/' + filename
     })
-    return reply.response({
+    return h.response({
       message: 'Quadrinho cadastrado com sucesso!'
     }).code(201)
   } catch (e) {
     console.log(e)
-    return reply.response({
+    return h.response({
       message: 'Falha ao processar sua requisição'
     }).code(500)
   }
 }
 
-const put = async (req, reply) => {
+const put = async (req, h) => {
   try {
     await repository.update(req.params.id, req.payload)
-    return reply.response({
+    return h.response({
       message: 'Quadrinho atualizado com sucesso!'
     }).code(200)
   } catch (e) {
-    return reply.response({
+    return h.response({
       message: 'Falha ao processar sua requisição'
     }).code(500)
   }
 }
 
-const remove = async (req, reply) => {
+const remove = async (req, h) => {
   try {
     await repository.delete(req.payload.id)
-    return reply.response({
+    return h.response({
       message: 'Quadrinho removido com sucesso!'
     }).code(200)
   } catch (e) {
-    return reply.response({
+    return h.response({
       message: 'Falha ao processar sua requisição'
     }).code(500)
   }

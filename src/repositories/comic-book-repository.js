@@ -42,6 +42,7 @@ exports.update = async (id, data) => {
         slug: data.slug,
         saga: data.saga,
         read: data.read,
+        image: data.image,
         publisher_id: data.publisher_id,
         published_date: data.published_date,
       }
