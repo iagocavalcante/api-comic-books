@@ -2,7 +2,16 @@ const mongoose = require('mongoose')
 const ComicBook = mongoose.model('ComicBook')
 
 exports.get = async () => {
-  const res = await ComicBook.find()
+  const res = await ComicBook.aggregate([
+    {
+      $lookup: {
+        from: "publisher",
+        localField: "publisher_id",
+        foreignField: "_id",
+        as: "publisher"
+      }
+    }
+  ])
   return res
 }
 

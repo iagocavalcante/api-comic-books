@@ -37,8 +37,8 @@ const comicBook = new Schema({
     trim: true
   },
   publisher_id: {
-    type: String,
-    trim: true
+    type: Schema.Types.ObjectId,
+    ref:'Publisher'
   },
   published_date: {
     type: String,

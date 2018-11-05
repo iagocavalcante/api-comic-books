@@ -82,7 +82,7 @@ const post = async (req, h) => {
       slug: req.payload.slug,
       description: req.payload.description,
       pages: req.payload.pages,
-      active: req.payload.read,
+      read: req.payload.read,
       saga: req.payload.saga,
       publisher_id: req.payload.publisher_id,
       published_date: req.payload.published_date,
