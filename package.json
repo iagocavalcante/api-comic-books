@@ -29,7 +29,7 @@
   "devDependencies": {
     "eslint": "6.4.0",
     "jest": "24.9.0",
-    "nodemon": "1.19.2"
+    "nodemon": "1.19.3"
   },
   "jest": {
     "testEnvironment": "node"
