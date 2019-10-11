@@ -24,7 +24,7 @@
     "guid": "0.0.12",
     "hapi": "^18.0.0",
     "mongoose": "^5.0.0",
-    "pm2": "^3.2.2"
+    "pm2": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "6.5.1",
