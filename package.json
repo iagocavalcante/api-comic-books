@@ -20,7 +20,7 @@
   "dependencies": {
     "bluebird": "^3.5.2",
     "boom": "^7.2.0",
-    "dotenv": "^8.0.0",
+    "dotenv": "^10.0.0",
     "guid": "0.0.12",
     "hapi": "^18.0.0",
     "mongoose": "^5.0.0",
